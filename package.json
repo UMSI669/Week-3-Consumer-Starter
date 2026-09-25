@@ -1,20 +1,37 @@
 {
   "name": "week-3-consumer-starter",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "expo-router/entry",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/linyuen513/Week-3-Consumer-Starter.git"
+  },
   "dependencies": {
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~57.0.2",
     "expo": "~57.0.24",
+    "expo-constants": "~57.0.19",
+    "expo-linking": "~57.0.10",
+    "expo-router": "~57.0.22",
     "expo-status-bar": "~57.0.1",
     "react": "19.2.3",
+    "react-dom": "19.2.3",
     "react-native": "0.86.3",
-      "anne-components":
-       "github:你的username/anne-component-library#v1.0.0"
+    "react-native-safe-area-context": "~5.7.0",
+    "react-native-screens": "~4.26.0",
+    "react-native-web": "^0.21.2",
+    "si669-inclass-3": "file:./vendor/si669-inclass-3"
   },
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "lint": "expo lint"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "eslint-config-expo": "~57.0.2"
+  }
 }
