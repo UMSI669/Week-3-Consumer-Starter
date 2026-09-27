@@ -1,0 +1,11 @@
+import { StyleSheet, Text, View } from 'react-native';
+import { AppHeader, BottomNavigation, Button, tokens } from 'si669-inclass-3';
+import { colors, space } from '../theme';
+
+// These compose the official si669-inclass-3 components with Shelf Swap content.
+export function HeaderAdapter({ title, subtitle, rightLabel, onRightPress }) {
+  return <View style={styles.header}><Text style={styles.eyebrow}>SHELF SWAP</Text><AppHeader location={title} notificationIcon="" />{subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}{rightLabel ? <Button accessibilityLabel={rightLabel} onPress={onRightPress} style={styles.headerButton} variant="secondary">{rightLabel}</Button> : null}</View>;
+}
+function ProfileIcon({ active }) { const color = active ? tokens.colors.text : tokens.colors.textMuted; return <View accessible accessibilityLabel="Profile" style={[styles.profileIcon, { borderColor: color }]}><View style={[styles.profileHead, { backgroundColor: color }]} /><View style={[styles.profileBody, { backgroundColor: color }]} /></View>; }
+export function MenuAdapter({ state, descriptors, navigation }) { const items = state.routes.map((route, index) => { const options = descriptors[route.key].options; return { label: options.tabBarLabel || options.title || route.name, icon: options.tabBarIconText === 'profile' ? <ProfileIcon active={state.index === index} /> : options.tabBarIconText }; }); return <BottomNavigation activeLabel={items[state.index]?.label} items={items} onItemPress={(item) => navigation.navigate(state.routes[items.findIndex((entry) => entry.label === item.label)].name)} />; }
+const styles = StyleSheet.create({ header: { backgroundColor: colors.paper, borderBottomColor: colors.border, borderBottomWidth: 1, paddingHorizontal: space.md, paddingVertical: space.sm }, eyebrow: { color: tokens.colors.primary, fontSize: 12, fontWeight: '800', letterSpacing: 1.2 }, subtitle: { color: colors.muted, fontSize: 14, lineHeight: 20 }, headerButton: { alignSelf: 'flex-start', marginTop: space.sm }, profileIcon: { alignItems: 'center', borderRadius: 13, borderWidth: 2, height: 26, justifyContent: 'center', overflow: 'hidden', width: 26 }, profileHead: { borderRadius: 4, height: 8, marginTop: 2, width: 8 }, profileBody: { borderTopLeftRadius: 9, borderTopRightRadius: 9, height: 8, marginTop: 2, width: 16 } });
